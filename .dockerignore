@@ -1,0 +1,13 @@
+.git
+.github
+.env
+.env.*
+!.env.example
+.kubeconfig.ci
+target/surefire-reports
+target/test-classes
+target/classes
+target/generated-sources
+target/generated-test-sources
+target/maven-status
+target/*.original
