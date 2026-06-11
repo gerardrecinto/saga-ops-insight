@@ -4,6 +4,7 @@
 
 <p align="center">
   <a href="https://github.com/gerardrecinto/signal-harbor/actions/workflows/ci.yml"><img alt="CI" src="https://github.com/gerardrecinto/signal-harbor/actions/workflows/ci.yml/badge.svg"></a>
+  <a href="https://github.com/gerardrecinto/signal-harbor/actions/workflows/release.yml"><img alt="Release" src="https://github.com/gerardrecinto/signal-harbor/actions/workflows/release.yml/badge.svg"></a>
   <img alt="Java 17" src="https://img.shields.io/badge/Java-17-F8D66D?labelColor=101820">
   <img alt="Python 3.12" src="https://img.shields.io/badge/Python-3.12-C9B8F0?labelColor=101820">
   <img alt="Spring Boot 3" src="https://img.shields.io/badge/Spring%20Boot-3.3-A7D8DE?labelColor=101820">
@@ -113,6 +114,12 @@ git clone https://github.com/gerardrecinto/signal-harbor.git
 cd signal-harbor
 cp .env.example .env
 docker compose up -d
+```
+
+### Docker
+
+```bash
+docker pull ghcr.io/gerardrecinto/signal-harbor:latest
 ```
 
 Java / Spring Boot:
@@ -230,7 +237,7 @@ The [Jenkinsfile](Jenkinsfile) keeps tests, packaging, image creation, and crede
 
 ### Container and Ingress
 
-The Docker image runs on port 80. An ingress controller terminates TLS on 443 and routes plain HTTP to the service on 80, so no TLS config lives inside the application.
+The Docker image runs on port 80. An ingress controller terminates TLS on 443 and routes plain HTTP to the service on 80, so no TLS config lives inside the application. The Dockerfile includes a `HEALTHCHECK` so orchestrators can detect startup failures without an external probe.
 
 ## Configuration
 
